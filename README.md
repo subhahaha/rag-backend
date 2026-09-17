@@ -19,7 +19,7 @@ A backend-only Retrieval-Augmented Generation (RAG) application built with FastA
 
 ### Conversational RAG API
 
-* Custom RAG pipeline implemented without `RetrievalQAChain`
+* Custom RAG pipeline implemented
 * Semantic retrieval from Qdrant
 * LLM-generated answers using Groq
 * Redis-backed conversation memory
@@ -155,7 +155,6 @@ REDIS_PORT=6379
 GROQ_API_KEY=your_groq_api_key
 ```
 
-Do not commit `.env` to version control.
 
 ### 5. Start Redis-compatible server
 
@@ -265,7 +264,7 @@ Example flow:
 
 ```text
 User:
-I'd like to arrange an interview. My name is Subha and my email is subha@example.com.
+I'd like to arrange an interview. My name is abc and my email is abc@example.com.
 
 Assistant:
 What date would you like to schedule the interview?
@@ -324,7 +323,7 @@ Generate Answer
 Store Conversation in Redis
 ```
 
-The RAG pipeline is implemented manually rather than using `RetrievalQAChain`.
+The RAG pipeline is implemented manually.
 
 ## Chunking Strategies
 
@@ -387,14 +386,7 @@ Stores:
 
 Completed booking information is persisted to SQLite and the temporary booking state is removed from Redis.
 
-## Constraints
 
-This implementation intentionally does not use:
-
-* FAISS
-* Chroma
-* `RetrievalQAChain`
-* A frontend/UI
 
 The application uses Qdrant for vector retrieval and a custom RAG pipeline.
 
@@ -404,20 +396,13 @@ Possible future improvements include:
 
 * Stronger email/date/time validation for interview bookings
 * More robust handling of ambiguous dates and times
-* Better handling of interrupted booking conversations
-* Configurable chunk size and overlap
-* Configurable retrieval `top-k`
-* Improved error handling and logging
 * Automated tests for API endpoints and services
 * Dockerization for easier deployment
 * Production Redis/Qdrant configuration
-* Authentication and authorization for production use
-* Additional document formats
 
 ## Security Notes
 
 * API keys are loaded from environment variables.
 * `.env` is excluded from version control.
 * Local databases and Qdrant runtime data are excluded from version control.
-* Production deployments should use proper secret management.
 
