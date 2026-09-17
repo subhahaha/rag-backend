@@ -1,0 +1,18 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+.env
+
+metadata.db
+qdrant_data/
+
+.pytest_cache/
+
+# Local test files
+empty.txt
+metadata_test.txt
+persistence_test.txt
+sample.txt
+test-leave.txt
